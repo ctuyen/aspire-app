@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, onBeforeMount, Suspense } from "vue";
+import { ref, computed, Suspense } from "vue";
 import Layout from "./Layout.vue";
 import Modal from "./Modal.vue";
 import { getMyCard, addMyCard, cancelMyCard } from "../api";
 import { useStore } from "vuex";
 import { Carousel, Slide, Pagination } from "vue3-carousel";
-
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 const store = useStore();
 
 getMyCard().then((data) => store.dispatch("updateMyCardList", data));
@@ -23,11 +24,19 @@ const isCancellingCard = ref(false);
 const isShowCardNumber = ref(false);
 const newName = ref("");
 const showingCardIndex = ref(0);
+const rules = computed(() => ({
+  newName: {
+    required,
+  },
+}));
+const v$ = useVuelidate(rules, { newName });
 
 const handleUpdateName = (e) => {
   newName.value = e.target.value;
 };
 const handleAddCard = async () => {
+  v$.value.newName.$touch();
+  if (v$.value.newName.$invalid) return;
   const newCard = await addMyCard(newName.value);
   store.dispatch("addMyCard", newCard);
   isAddingNewCard.value = false;
@@ -245,9 +254,59 @@ const setShowingCard = (index) => {
                       </div>
                     </div>
                   </div>
-                  <div class="flex border-t border-c8 pt-4">
+                  <div class="flex border-t border-c8 pt-4 mb-4">
                     <div class="p-4 rounded-full w-12 h-12 bg-c11">
                       <img src="../assets/flights.svg" />
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-bold text-cBlack">Hamleys</div>
+                        <div class="flex items-center">
+                          <div class="text-cBlack font-bold mr-2">- S$ 150</div>
+                          <img src="../assets/next.svg" />
+                        </div>
+                      </div>
+                      <div class="text-c10 text-xs mt-1 font-light">20 May 2020</div>
+                      <div class="flex items-center mt-3">
+                        <div
+                          class="flex items-center justify-center rounded-full w-6 h-5 bg-c5"
+                        >
+                          <img src="../assets/business-and-finance.svg" />
+                        </div>
+                        <div class="text-c5 text-xs font-semibold ml-2 mx-auto">
+                          Refund on debit card
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex border-t border-c8 pt-4 mb-4">
+                    <div class="p-4 rounded-full w-12 h-12 bg-c12">
+                      <img src="../assets/megaphone.svg" />
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <div class="flex items-center justify-between">
+                        <div class="font-bold text-cBlack">Hamleys</div>
+                        <div class="flex items-center">
+                          <div class="text-cBlack font-bold mr-2">- S$ 150</div>
+                          <img src="../assets/next.svg" />
+                        </div>
+                      </div>
+                      <div class="text-c10 text-xs mt-1 font-light">20 May 2020</div>
+                      <div class="flex items-center mt-3">
+                        <div
+                          class="flex items-center justify-center rounded-full w-6 h-5 bg-c5"
+                        >
+                          <img src="../assets/business-and-finance.svg" />
+                        </div>
+                        <div class="text-c5 text-xs font-semibold ml-2 mx-auto">
+                          Refund on debit card
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex border-t border-c8 pt-4 mb-4">
+                    <div class="p-4 rounded-full w-12 h-12 bg-c9">
+                      <img src="../assets/file-storage.svg" />
                     </div>
                     <div class="ml-3 flex-1">
                       <div class="flex items-center justify-between">
@@ -273,7 +332,7 @@ const setShowingCard = (index) => {
                 </div>
               </div>
               <div
-                class="absolute inset-x-0 -bottom-8 flex items-center justify-center bg-c13 rounded-b-lg border border-c14 text-c1 text-sm py-3 font-bold z-0"
+                class="flex items-center justify-center bg-c13 rounded-b-lg border border-c14 mb-16 text-c1 text-sm py-3 font-bold z-0 mb-10"
               >
                 View all card transactions
               </div>
@@ -292,6 +351,12 @@ const setShowingCard = (index) => {
             class="bg-cWhite text-c0-500 rounded-lg leading-tight border border-c0-300 px-3 appearance-none w-full h-10 placeholder-c0-500 focus:outline-none focus:border-c1-500 mt-1"
             @input="handleUpdateName"
           />
+          <div
+            v-if="v$.newName.$dirty && v$.newName.$invalid"
+            class="text-xs text-cError mt-1"
+          >
+            Please input holder name
+          </div>
           <div class="flex justify-end">
             <button
               class="px-4 py-2 border border-c1 bg-cWhite text-c1 rounded-lg text-sm mt-2"

@@ -20,6 +20,7 @@ module.exports = {
         cGray: "#DDDDDD",
         cWhite: "#FFFFFF",
         cBlack: "#222222",
+        cError: "#df0b0b",
       },
       screens: {
         sm: "640px",
@@ -196,6 +197,7 @@ module.exports = {
         8: "8px",
       },
       boxShadow: {
+        homeMenu: "0 -3px 6px 0 rgb(0 0 0 / 0.1)",
         sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
         DEFAULT:
           "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
@@ -374,6 +376,7 @@ module.exports = {
         ],
       },
       fontSize: {
+        "2xs": ["0.55rem", { lineHeight: "1rem" }],
         xs: ["0.75rem", { lineHeight: "1rem" }],
         sm: ["0.875rem", { lineHeight: "1.25rem" }],
         base: ["1rem", { lineHeight: "1.5rem" }],
