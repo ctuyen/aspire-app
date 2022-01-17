@@ -94,7 +94,7 @@ const setShowingCard = (index) => {
         <carousel :items-to-show="1" snapAlign="start">
           <slide v-for="card in myCards" :key="card.number">
             <!-- Card info -->
-            <div class="relative h-56 w-90 mt-8 mb-4 z-0">
+            <div class="relative h-60 w-90 mt-8 mb-4 z-0">
               <div
                 class="absolute bg-cWhite text-c1 text-xs rounded-md flex items-center px-2 pt-1.5 pb-6 top-0 right-0 h-12"
                 @click="isShowCardNumber = !isShowCardNumber"
