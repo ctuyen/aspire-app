@@ -1,16 +1,39 @@
 export default {
   state: () => ({
-    number: "123123",
-    status: "active",
+    myCards: [],
+    companyCards: [],
   }),
   getters: {},
   mutations: {
-    UPDATE_STATUS(state: any, payload: String) {
-      state.card.status = payload;
+    UPDATE_MY_CARD_LIST(state, payload) {
+      state.myCards = payload;
+    },
+    ADD_MY_CARD(state, payload) {
+      state.myCards.push(payload);
+    },
+    CANCEL_MY_CARD(state, payload) {
+      state.myCards = state.myCards.filter((item) => item.number !== payload);
+    },
+    UPDATE_STATUS(state, payload) {
+      state.myCards = state.myCards.map((item) => {
+        if (item.number === payload.number) {
+          item.status = payload.status;
+        }
+        return item;
+      });
     },
   },
   actions: {
-    updateStatus({ commit }, data: String) {
+    updateMyCardList({ commit }, data) {
+      commit("UPDATE_MY_CARD_LIST", data);
+    },
+    addMyCard({ commit }, data) {
+      commit("ADD_MY_CARD", data);
+    },
+    cancelMyCard({ commit }, data) {
+      commit("CANCEL_MY_CARD", data);
+    },
+    updateStatus({ commit }, data) {
       commit("UPDATE_STATUS", data);
     },
   },
