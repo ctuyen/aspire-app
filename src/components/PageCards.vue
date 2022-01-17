@@ -94,13 +94,15 @@ const setShowingCard = (index) => {
         <carousel :items-to-show="1" snapAlign="start">
           <slide v-for="card in myCards" :key="card.number">
             <!-- Card info -->
-            <div class="relative h-60 mt-8 w-full mb-4 z-0">
+            <div class="relative h-56 w-90 mt-8 mb-4 z-0">
               <div
                 class="absolute bg-cWhite text-c1 text-xs rounded-md flex items-center px-2 pt-1.5 pb-6 top-0 right-0 h-12"
                 @click="isShowCardNumber = !isShowCardNumber"
               >
                 <img src="../assets/remove_red_eye-24px.svg" class="w-4 mr-1" />
-                <span class="text-c2 text-xs font-bold">Show card number</span>
+                <span class="text-c2 text-xs font-bold cursor-pointer"
+                  >Show card number</span
+                >
               </div>
               <div
                 class="absolute bg-c1 h-56 rounded-lg z-10 inset-x-0 top-7 p-6 tracking-widest"
@@ -175,7 +177,7 @@ const setShowingCard = (index) => {
         <!-- Menu options -->
         <div class="flex justify-between bg-c4 rounded-t-3xl py-5 px-6 mt-8">
           <div
-            class="flex flex-col items-center text-center cursor-pointer"
+            class="flex flex-col items-center text-center cursor-pointer mx-2"
             @click="frezeeCard"
           >
             <img src="../assets/Freeze-card.svg" />
@@ -183,20 +185,20 @@ const setShowingCard = (index) => {
               {{ showingCard.status === "active" ? "Freeze card" : "Unfreezed card" }}
             </div>
           </div>
-          <div class="flex flex-col items-center text-center cursor-pointer">
+          <div class="flex flex-col items-center text-center cursor-pointer mx-2">
             <img src="../assets/Set-spend-limit.svg" />
             <div class="mt-2 text-c3 text-sm">Set spend limit</div>
           </div>
-          <div class="flex flex-col items-center text-center cursor-pointer">
+          <div class="flex flex-col items-center text-center cursor-pointer mx-2">
             <img src="../assets/GPay.svg" />
             <div class="mt-2 text-c3 text-sm">Add to GPay</div>
           </div>
-          <div class="flex flex-col items-center text-center cursor-pointer">
+          <div class="flex flex-col items-center text-center cursor-pointer mx-2">
             <img src="../assets/Replace-card.svg" />
             <div class="mt-2 text-c3 text-sm">Replace card</div>
           </div>
           <div
-            class="flex flex-col items-center text-center cursor-pointer"
+            class="flex flex-col items-center text-center cursor-pointer mx-2"
             @click="isCancellingCard = true"
           >
             <img src="../assets/Deactivate-card.svg" />
@@ -332,7 +334,7 @@ const setShowingCard = (index) => {
                 </div>
               </div>
               <div
-                class="flex items-center justify-center bg-c13 rounded-b-lg border border-c14 mb-16 text-c1 text-sm py-3 font-bold z-0 mb-10"
+                class="flex items-center justify-center bg-c13 rounded-b-lg border border-c14 mb-16 text-c1 text-sm py-3 font-bold z-0 mb-10 cursor-pointer"
               >
                 View all card transactions
               </div>
@@ -344,7 +346,7 @@ const setShowingCard = (index) => {
       <!-- Modals -->
       <teleport to="#layer1">
         <Modal :isVisible="isAddingNewCard" @overlay-click="isAddingNewCard = false">
-          <div class="text-2xl text-c1 font-bold">New card</div>
+          <div class="text-2xl text-c1 font-bold cursor-pointer">New card</div>
           <div class="mt-4 font-bold text-cBlack">Please specify the name on card</div>
           <input
             type="text"
