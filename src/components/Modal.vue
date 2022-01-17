@@ -22,7 +22,6 @@
         :class="variantCls.modalWrapper"
         @click.self="handleClickOverlay"
         :style="modalZIndex"
-        v-scroll-lock="true"
       >
         <div :class="variantCls.root">
           <slot />

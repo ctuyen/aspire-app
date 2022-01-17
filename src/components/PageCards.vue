@@ -159,7 +159,7 @@ const setShowingCard = (index) => {
                   </div>
                 </div>
                 <div class="flex justify-end">
-                  <img src="../assets/Visa Logo.svg" />
+                  <img src="../assets/Visa-Logo.svg" />
                 </div>
               </div>
             </div>
@@ -178,13 +178,13 @@ const setShowingCard = (index) => {
             class="flex flex-col items-center text-center cursor-pointer"
             @click="frezeeCard"
           >
-            <img src="../assets/Freeze card.svg" />
+            <img src="../assets/Freeze-card.svg" />
             <div class="mt-2 text-c3 text-sm font-thin">
               {{ showingCard.status === "active" ? "Freeze card" : "Unfreezed card" }}
             </div>
           </div>
           <div class="flex flex-col items-center text-center cursor-pointer">
-            <img src="../assets/Set spend limit.svg" />
+            <img src="../assets/Set-spend-limit.svg" />
             <div class="mt-2 text-c3 text-sm">Set spend limit</div>
           </div>
           <div class="flex flex-col items-center text-center cursor-pointer">
@@ -192,14 +192,14 @@ const setShowingCard = (index) => {
             <div class="mt-2 text-c3 text-sm">Add to GPay</div>
           </div>
           <div class="flex flex-col items-center text-center cursor-pointer">
-            <img src="../assets/Replace card.svg" />
+            <img src="../assets/Replace-card.svg" />
             <div class="mt-2 text-c3 text-sm">Replace card</div>
           </div>
           <div
             class="flex flex-col items-center text-center cursor-pointer"
             @click="isCancellingCard = true"
           >
-            <img src="../assets/Deactivate card.svg" />
+            <img src="../assets/Deactivate-card.svg" />
             <div class="mt-2 text-c3 text-sm">Cancel card</div>
           </div>
         </div>
@@ -209,7 +209,7 @@ const setShowingCard = (index) => {
             class="flex items-center justify-between p-5 rounded-lg shadow-sm border border-c7 bg-c6"
           >
             <div class="flex items-center">
-              <img src="../assets/Card details.svg" />
+              <img src="../assets/Card-details.svg" />
               <div class="ml-3 font-bold text-sm text-c3">Card details</div>
             </div>
             <img src="../assets/down-arrow.svg" />
@@ -220,7 +220,7 @@ const setShowingCard = (index) => {
               class="absolute inset-x-0 w-full flex items-center justify-between p-5 rounded-lg shadow-sm border border-c7 bg-c6 z-10"
             >
               <div class="flex items-center">
-                <img src="../assets/Recent transactions.svg" />
+                <img src="../assets/Recent-transactions.svg" />
                 <div class="ml-3 font-bold text-sm text-c3">Recent transactions</div>
               </div>
               <img src="../assets/up-arrow.svg" />

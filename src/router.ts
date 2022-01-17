@@ -36,6 +36,6 @@ const routes = [
     component: PageProfile,
   },
 ];
-
-const router = createRouter({ history: createWebHistory(), routes });
+// @ts-ignore <- ignore it
+const router = createRouter({ routes, history: createWebHistory() });
 export default router;
